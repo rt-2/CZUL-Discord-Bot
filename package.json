@@ -7,10 +7,12 @@
 	"dependencies": {
 		"bufferutil": "^4.0.1",
 		"discord.io": "github:Woor/discord.io#gateway_v6",
+		"discord.js": "github:discordjs/discord.js",
+		"http": "0.0.0",
+		"https": "^1.0.0",
+		"node-gyp": "^6.0.1",
 		"node-gyp-build": "^4.2.0",
-		"winston": "^3.2.1",
-		"discord.js": "github:discordjs/discord.js"
+		"winston": "^3.2.1"
 	},
-	"devDependencies": {
-	}
+	"devDependencies": {}
 }
