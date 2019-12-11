@@ -1,8 +1,11 @@
 {
-	“name”: “CZUL_FSS”,
-	“version”: “1.0.0”,
-	“description”: “CZUL Discord Bot”,
-	“main”: “bot.js”,
-	“author”: “Public bots can be added by anyone. When unchecked, only you can join this bot to servers.”,
-	“dependencies”: {}
+	"name": "CZUL_FSS",
+	"version": "1.0.0",
+	"description": "CZUL Discord Bot",
+	"main": "bot.js",
+	"author": "Public bots can be added by anyone. When unchecked, only you can join this bot to servers.",
+	"dependencies": {
+		"discord.io": "^2.5.3",
+		"winston": "^3.2.1"
+	}
 }
