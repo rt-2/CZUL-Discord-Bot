@@ -1,5 +1,20 @@
+const Discord = require('discord.js');
+const client = new Discord.Client();
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
+
+client.on('message', msg => {
+  if (msg.content === 'ping') {
+    msg.reply('pong');
+  }
+});
+
+client.login(auth.token);
 
 
+/*
 var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
@@ -11,12 +26,31 @@ logger.add(new logger.transports.Console, {
 });
 logger.level = 'debug';
 
+console.log('Started');
+
 // Initialize Discord Bot
 var bot = new Discord.Client({
-   token: auth.token,
+   //token: auth.token,
+   token: "NjU0MTcwMzY4NTE2MjkyNjE4.XfCxFw.u-bwZfK-HoM_nCkBFYWFIW7soL4",
    autorun: true
 });
 
+console.log('Client created');
+
+bot.on('ready', function() {
+    console.log('Logged in as %s - %s\n', bot.username, bot.id);
+});
+ 
+bot.on('message', function(user, userID, channelID, message, event) {
+    if (message === "ping") {
+        bot.sendMessage({
+            to: channelID,
+            message: "pong"
+        });
+    }
+});
+*/
+/*
 bot.on('ready', function (evt) {
     logger.info('Connected');
     logger.info('Logged in as: ');
@@ -43,3 +77,4 @@ bot.on('message', function (user, userID, channelID, message, evt) {
          }
      }
 });
+*/
