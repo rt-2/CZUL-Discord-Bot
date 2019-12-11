@@ -12,6 +12,7 @@
 		"https": "^1.0.0",
 		"node-gyp": "^6.0.1",
 		"node-gyp-build": "^4.2.0",
+		"string-strip-html": "^4.3.10",
 		"winston": "^3.2.1"
 	},
 	"devDependencies": {}

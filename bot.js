@@ -1,6 +1,9 @@
 const fs = require('fs');
 const https = require('https');
 const Discord = require('discord.js');
+const stripHtml = require("string-strip-html");
+
+
 var auth = require('./auth.json');
 const bot = new Discord.Client();
 /*
@@ -52,7 +55,7 @@ bot.on('message', message => {
             // .metar
             case 'metar':
 			
-				let icao = args[0].toUpperCase();
+				var icao = args[0].toUpperCase();
 				if(icao.length == 4)
 				{
 					https.get('https://metar.vatsim.net/?id='+icao, (resp) => {
@@ -70,6 +73,30 @@ bot.on('message', message => {
 					}).on("error", (err) => {
 						console.log("Error: " + err.message);
 						message.reply('Weather for '+icao+' unfetchable.');
+					});
+				}
+            break;
+            // .notam
+            case 'notam':
+			
+				var icao = args[0].toUpperCase();
+				if(icao.length == 4)
+				{
+					https.get('https://rt2.czulfir.com/Notams/?nosearch&nodesign&mandatory&icao='+icao, (resp) => {
+					  let data = '';
+
+					  // A chunk of data has been recieved.
+					  resp.on('data', (chunk) => {
+						data += chunk;
+					  });
+
+					  // The whole response has been received. Print out the result.
+					  resp.on('end', () => {
+						message.reply('NOTAMs for '+icao+' is ```'+stripHtml(data.replace(/<br>/gi, "\r\n"))+'```');
+					  });
+					}).on("error", (err) => {
+						console.log("Error: " + err.message);
+						message.reply('NOTAMs for '+icao+' unfetchable.');
 					});
 				}
             break;
@@ -123,6 +150,7 @@ bot.on('message', message => {
 });
 
 bot.login(auth.token);
+
 
 function getUsers() {
 	let guilds = bot.guilds.array();
