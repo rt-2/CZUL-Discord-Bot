@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 const stripHtml = require("string-strip-html");
 
 
-var auth = require('./auth.json');
+const auth = require('./auth.json');
 const bot = new Discord.Client();
 /*
 https.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY', (resp) => {
